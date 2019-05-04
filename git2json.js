@@ -61,6 +61,8 @@ const indexName = 'git-history'
 const importLines = []
 history.forEach(h => {
   importLines.push({ index: { _index: indexName, _id: h.commit } })
+  h.author.date = new Date(h.author.date).toISOString()
+  h.commiter.date = new Date(h.commiter.date).toISOString()
   importLines.push(h)
 })
 
